@@ -1,0 +1,11 @@
+#!/bin/bash
+
+for I in 0 1 2 3 4 5 6 7; do
+	TOP="$((256 * I))"
+	for J in 0 1 2 3 4 5 6 7 8 9 10 11 12 13; do
+		LEFT="$((170 * J))"
+		printf -v AX "%02d" $J
+		echo convert -crop 170x256+${LEFT}+${TOP} uno_deck.png c${I}_${AX}.png
+		convert -crop 170x256+${LEFT}+${TOP} uno_deck.png c${I}_${AX}.png
+	done
+done
