@@ -5,12 +5,12 @@
 *
 * Version Control :
 * 1. 12/01/2015; Akwila; Create Card Class
-* 
+* 2. 14/01/2015; Akwila; Change CardId
 */
 
 public class Card {
 
-    private final int CardId;
+    private final String CardId;
     private final String FrontImage;
     private final String BackImage;
     private final String Color;
@@ -39,7 +39,7 @@ public class Card {
     * Wild, Wild Draw Four = 50pt
     */
 
-    public Card(int CardId, String FrontImage, String BackImage, String Color, String SpecialAbility, int Point) {
+    public Card(String CardId, String FrontImage, String BackImage, String Color, String SpecialAbility, int Point) {
         this.CardId = CardId;
         this.FrontImage = FrontImage;
         this.BackImage = BackImage;
@@ -48,7 +48,7 @@ public class Card {
         this.Point = Point;
     }
 
-    public int getCardId() {
+    public String getCardId() {
         return CardId;
     }
 
