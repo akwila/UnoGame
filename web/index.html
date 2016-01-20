@@ -1,16 +1,57 @@
 <!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
 <html>
     <head>
-        <title>TODO supply a title</title>
+        <title>Uno Game</title>
         <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">        
+        <script src="index.js"></script>
+        <link rel="stylesheet" type="text/css" href="style.css">
     </head>
     <body>
-        <div>TODO write content</div>
+        <div id="wrapper">
+            <h1>Uno Game</h1>
+            <p>Welcome to the Uno Game</p>
+            <br />
+            <div id="addGame">
+                <div class="button">
+                    <a href="#" OnClick="showCreateGrameForm()">Create a game</a>
+                    <a href="../../../../AppData/Local/Temp/watch.url"></a>
+                </div>
+                <div class="button">
+                    <a href="#" OnClick="showRegisterationForm()">Register to play</a>
+                </div>
+                <form id="registerationForm" method="post" action="CreatePlayer">
+                    <h3>Register >>>Join a game</h3>
+                    <span>Name:<input type="text" name="playerName" id="playerName"></span>
+                    <input type="submit" class="button" value="Register">
+                    <input type="reset" class="button" value="Cancel" onclick=hideForm()>                    
+                </form>                    
+                <form id="createGameForm" action="CreateGame" method="post">
+                    <h3>Create >>> A new game</h3>  
+                    <table>
+                        <tr>
+                            <td>Game Room Name:</td>
+                            <td><input type="text" name="roomName" id="roomName"></td>
+                        <tr>
+                        <tr>
+                            <td>Max Player:</td>
+                            <td><input type="text" name="maxPlayer" id="maxPlayer"></td>
+                        <tr>
+                        <tr>
+                            <td><p>Game Win Regulations</p></td>
+                        </tr>
+                        <tr>
+                            <td><input type="radio" name="limit" checked="checked">Round</td>
+                            <td><input type="text" name="roundLimit" id="roundLimit"></td>                            
+                        </tr>                        
+                    </table>
+                    <input type="submit" class="button" value="Create">
+                    <input type="reset" class="button" value="Cancel" onclick="hideForm()">
+                </form>
+            </div>
+            <br>
+            <h3>Game List >>>Click to join</h3>
+            <div id="content"></div>
+        </div>
     </body>
 </html>

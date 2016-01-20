@@ -1,31 +1,40 @@
-/*
-* Owner : Uno Game First Team
-* General Description of this Class : 
-* - this class is to save player information that participate in game
-*
-* Version Control :
-* 1. 12/01/2015; Akwila; Create Player Class
-* 
-*/
-
+import java.io.Serializable;
 import java.util.HashMap;
+import javax.enterprise.context.SessionScoped;
+import javax.inject.Named;
 
-public class Player {
+@Named
+@SessionScoped
+public class Player implements Serializable {
 
-    private final int PlayerId;
-    private final String PlayerName;
+    private String PlayerId;
+    private String PlayerName;
     private HashMap<Card, Boolean> HandCards;
-    // if hash map doesnt word, another solution is double arraylist
     private int TotalScore;
 
-    public Player(int PlayerId, String PlayerName) {
+    public Player(String PlayerId, String PlayerName) {
         this.PlayerId = PlayerId;
         this.PlayerName = PlayerName;
         this.HandCards = new HashMap<>();
         this.TotalScore = 0;
     }
 
-    public int getPlayerId() {
+    public Player() {
+        this.PlayerId = "";
+        this.PlayerName = "";
+        this.HandCards = new HashMap<>();
+        this.TotalScore = 0;
+    }
+
+    public void setPlayerId(String PlayerId) {
+        this.PlayerId = PlayerId;
+    }
+
+    public void setPlayerName(String PlayerName) {
+        this.PlayerName = PlayerName;
+    }
+
+    public String getPlayerId() {
         return PlayerId;
     }
 
@@ -77,11 +86,31 @@ public class Player {
         this.TotalScore += score;
     }
 
+    @Override
+    public String toString() {
+        String st = "Player Id : " + this.PlayerId
+                + "; Planer Name : " + this.PlayerName
+                + "; Card : ";
+        for (Card cd : HandCards.keySet()) {
+            st += cd.getCardId() + " ";
+        }
+        return st;
+    }
+
     public void Uno(Player p) {
         //???? Let think this one later
     }
 
     public void Uno() {
         //???? Let think this one later
+    }
+    
+    public Player copy(){
+        Player p = new Player();
+        p.PlayerId=PlayerId;
+        p.PlayerName= PlayerName;
+        p.TotalScore = TotalScore;
+        p.HandCards = HandCards;
+        return p;
     }
 }
